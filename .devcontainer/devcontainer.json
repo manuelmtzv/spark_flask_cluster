@@ -1,0 +1,12 @@
+{
+  "name": "Python with Spark",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/app", 
+  "portsAttributes": {
+    "5000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    }
+  }
+}
