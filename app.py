@@ -16,5 +16,16 @@ def run_analysis():
     result = distData.reduce(lambda a, b: a + b)    
     return str(result) + ' is the result of the analysis.'
 
+@app.route('/read-file')
+def read_file():
+    spark = SparkSession.builder.appName("Flask and Spark: ").master('spark://spark-master:7077').getOrCreate()
+    
+    try:
+        df = spark.read.csv('data/data.csv', header=True, inferSchema=True)
+        return df.show()
+    except Exception as e:   
+        print(e)
+        return 'File not found!', 404    
+
 if __name__ == "__main__":    
     app.run(host='0.0.0.0', port=5000, debug=True)

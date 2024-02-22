@@ -6,6 +6,8 @@ services:
     ports:
       - "9090:8080"
       - "7077:7077"
+    volumes: 
+      - ./data:/opt/bitnami/spark/app/data
 
   spark-worker-1:
     image: bitnami/spark:latest
@@ -14,9 +16,11 @@ services:
       - spark-master
     environment:
       SPARK_MODE: worker
-      SPARK_WORKER_CORES: 2
-      SPARK_WORKER_MEMORY: 2g
+      SPARK_WORKER_CORES: 1
+      SPARK_WORKER_MEMORY: 1g
       SPARK_MASTER_URL: spark://spark-master:7077
+    volumes: 
+      - ./data:/opt/bitnami/spark/app/data
 
   backend:
     build:
