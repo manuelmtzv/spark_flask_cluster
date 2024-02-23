@@ -21,7 +21,7 @@ def read_file():
     spark = SparkSession.builder.appName("Flask and Spark: ").master('spark://spark-master:7077').getOrCreate()
     
     try:
-        df = spark.read.csv('file:////home/data/data.csv', header=True, inferSchema=True)
+        df = spark.read.csv('file:////home/data/starbucks.csv', header=True, inferSchema=True)
         return str(df)
     except Exception as e:   
         print(e)
