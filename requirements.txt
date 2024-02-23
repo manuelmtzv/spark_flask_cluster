@@ -1,0 +1,10 @@
+Flask
+pyspark 
+pyspark[sql]
+pyspark[pandas_on_spark]
+plotly
+pyspark[connect]
+pandas
+numpy
+matplotlib
+pyarrow
